@@ -76,11 +76,12 @@ namespace WpfApp1
             transaction.Commit();
             result = dt;
         }
-        public static DataTable UserList()
+        public static DataTable BaseTable(string TableName)
         {
             using (SqlCommand cmd = connection.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM dbo.Users";
+
+                cmd.CommandText = string.Format("SELECT * FROM {0}", TableName);
                 DataTable dt = new DataTable();
                 using (SqlDataReader r = cmd.ExecuteReader())
                 {
@@ -92,6 +93,225 @@ namespace WpfApp1
             }
         }
 
+        public static void AddUser(string NazwaUzytkownika, int LokalizacjaX, int LokalizajaY, string MocNadawcza, string ZyskAntenyO, string ZyskAntenyN, int NumerKanalu, double aclr1, double aclr2, string statuss)
+        {
+            var a = string.Format("INSERT dbo.Users2(Nazwa,X,Y,Moc,[Zysk Nadawczej],[Zysk Odbiorczej],[Numer Kanalu], [ACLR+1], [ACLR+2], [Status]) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, '{9}');", NazwaUzytkownika, LokalizacjaX, LokalizajaY, MocNadawcza, ZyskAntenyO, ZyskAntenyN, NumerKanalu, aclr1, aclr2, statuss);
+            Command(a);
+            //Command(string.Format("INSERT dbo.Users2() VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9});", NazwaUzytkownika, LokalizacjaX, LokalizajaY, NumerKanalu, MocNadawcza, ZyskAntenyN, ZyskAntenyO, aclr1, aclr2, statuss));
+        }
+        public static void addName(string name, string cell, string vall, int id)
+        {
+            Command(string.Format("dbo.{0} set \"{1}\"='{2}' where ID= ", name, cell, vall, id));
+        }
+
+        public static void ClearDB(string name)
+        {
+                DataBase.Command(string.Format("TRUNCATE TABLE {0}; " +
+                    "DECLARE @intCounter as INT = 1; WHILE @intCounter <= 200 BEGIN INSERT INTO {0} VALUES(" +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null," +
+                    "null)SET @IntCounter = @IntCounter + 1;END; ", name));
+                //DataBase.Command(string.Format("", i + 1));
+                //DataBase.Command(string.Format("TRUNCATE TABLE dbo.Name{0}", i + 1));
+
+        }
     }
 
 }

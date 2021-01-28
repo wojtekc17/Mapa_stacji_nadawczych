@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="867" Width="1659">
-    <TabControl SelectionChanged="onSelectionChanged">
+        Title="MainWindow" Height="852" Width="1839">
+    <TabControl>
         <TabItem x:Name="TabItemDane" Header="Dane">
-            <Grid Margin="35,20,70,66">
+            <Grid Margin="35,20,65,31">
                 <Grid Margin="25,24,0,27" HorizontalAlignment="Left" Width="872">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -17,7 +17,7 @@
                             " Width="117"/>
                     <Label Content="Dane użytkownika:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="109"/>
                     <Label Content="Moc nadawcza:" HorizontalAlignment="Left" Margin="15,59,0,0" VerticalAlignment="Top" Width="121" Height="24"/>
-                    <Label Content="Lokalizacja:" HorizontalAlignment="Left" Margin="15,88,0,0" VerticalAlignment="Top" Width="121" Height="24"/>
+                    <Label Content="Lokalizacja(km):" HorizontalAlignment="Left" Margin="15,88,0,0" VerticalAlignment="Top" Width="121" Height="24"/>
                     <Label Content="Zysk anteny nadawczej:" HorizontalAlignment="Left" Margin="15,117,0,0" VerticalAlignment="Top" Width="137" Height="24"/>
                     <Label Content="Numer kanału:" HorizontalAlignment="Left" Margin="15,233,0,0" VerticalAlignment="Top" Width="121" Height="24"/>
                     <TextBox x:Name="TextBoxMocNadawcza" HorizontalAlignment="Left" Margin="141,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="24" RenderTransformOrigin="0.483,0.593"/>
@@ -35,47 +35,44 @@
                         </Label.RenderTransform>
                     </Label>
                     <Label Content="Y:" HorizontalAlignment="Left" Margin="211,88,0,0" VerticalAlignment="Top" Height="24" Width="20" RenderTransformOrigin="0.5,0.654"/>
-                    <TextBox x:Name="TextBoxTest" HorizontalAlignment="Left" Margin="111,369,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
                     <ComboBox x:Name="ComboBoxM" HorizontalAlignment="Left" Margin="222,59,0,0" VerticalAlignment="Top" Width="52" Height="24" Loaded="ComboBoxM_Loaded"/>
                     <ComboBox x:Name="ComboBoxZN" HorizontalAlignment="Left" Margin="222,117,0,0" VerticalAlignment="Top" Width="52" Height="24" Loaded="ComboBoxZN_Loaded"/>
                     <TextBox x:Name="TextBoxNazwaUzytkownika" HorizontalAlignment="Left" Margin="141,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Height="24"/>
                     <Label Content="Nzawa użytkownika:" HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="121" Height="24"/>
                     <Button x:Name="ButtonUsunUzytkownika" Content="Usuń użytkownika" HorizontalAlignment="Left" Margin="174,279,0,0" VerticalAlignment="Top" Click="ButtonUsunUzytkownika_Click" Height="24" Width="100"/>
-                    <DataGrid x:Name="DataGridUsers" HorizontalAlignment="Left" Height="624" Margin="297,30,0,0" VerticalAlignment="Top" Width="550" IsReadOnly="True"/>
-                    <ComboBox x:Name="TextBoxNumerKanalu" HorizontalAlignment="Left" Margin="141,233,0,0" VerticalAlignment="Top" Width="133" Height="24">
-                        <ComboBoxItem Content="1" IsSelected="True"/>
-                        <ComboBoxItem Content="2"/>
-                        <ComboBoxItem Content="3"/>
-                        <ComboBoxItem Content="4"/>
-                        <ComboBoxItem Content="5"/>
-                        <ComboBoxItem Content="6"/>
-                        <ComboBoxItem Content="7"/>
-                        <ComboBoxItem Content="8"/>
-                        <ComboBoxItem Content="9"/>
-                        <ComboBoxItem Content="10"/>
-                    </ComboBox>
+                    <DataGrid x:Name="DataGridUsers" Height="624" Margin="302,0,-35,0" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="605"/>
+                    <ComboBox x:Name="ComboBoxNumerKanalu" HorizontalAlignment="Left" Margin="141,233,0,0" VerticalAlignment="Top" Width="133" Height="24" Loaded="ComboBoxNumerKanalu_Loaded"/>
                     <Label Content="Zysk anteny odbiorczej:" HorizontalAlignment="Left" Margin="15,146,0,0" VerticalAlignment="Top" Height="24" Width="133"/>
                     <TextBox x:Name="TextBoxZyskAntenyO" HorizontalAlignment="Left" Height="24" Margin="152,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
                     <ComboBox x:Name="ComboBoxZO" HorizontalAlignment="Left" Margin="222,146,0,0" VerticalAlignment="Top" Width="52" Height="24" Loaded="ComboBoxZO_Loaded"/>
                     <Label Content="ACLR +1(dB):" HorizontalAlignment="Left" Margin="19,175,0,0" VerticalAlignment="Top" Height="24" Width="117"/>
                     <Label Content="ACLR +2(dB):" HorizontalAlignment="Left" Margin="19,204,0,0" VerticalAlignment="Top" Height="24" Width="117"/>
-                    <TextBox x:Name="TextBoxACLR1" HorizontalAlignment="Left" Height="24" Margin="141,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-                    <TextBox x:Name="TextBoxACLR2" HorizontalAlignment="Left" Height="24" Margin="141,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-                    <Button x:Name="PlotMap" Content="Rysuj mape" HorizontalAlignment="Left" Margin="172,429,0,0" VerticalAlignment="Top" Width="75" Click="PlotMap_Click"/>
-                    <TextBlock x:Name="lalalal" HorizontalAlignment="Left" Margin="73,489,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="35" Width="94"/>
+                    <TextBox x:Name="TextBoxACLR1" HorizontalAlignment="Left" Height="24" Margin="141,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Text="40"/>
+                    <TextBox x:Name="TextBoxACLR2" HorizontalAlignment="Left" Height="24" Margin="141,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Text="60"/>
                 </Grid>
-                <RadioButton x:Name="RadioBaza" Content="Nie połączono" Margin="42,642,1378,53" Checked="RadioBazaChecked"/>
-                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Margin="897,53,15,66">
-                    <Canvas Name="CanvasMapa"  Height="4000" Width="4000" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <RadioButton x:Name="RadioBaza" Content="Nie połączono" Margin="42,598,1388,67" Checked="RadioBazaChecked"/>
+                <ScrollViewer x:Name="ScrollViewerMap" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Margin="972,24,-60,95">
+                    <Canvas  Name="CanvasMapa"  Height="4000" Width="4000" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Visible">
+
                         <Rectangle Fill="Gray"  Height="4000" Stroke="Black" Width="4000" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Visible" />
-                        <Grid Name="Grid2" HorizontalAlignment="Left" Height="800" Margin="0,0,0,0" VerticalAlignment="Top" Width="800"/>
+                        <Grid  Name="Grid2" HorizontalAlignment="Left" Height="800" Margin="0,0,0,0" VerticalAlignment="Top" Width="800"/>
                     </Canvas>
                 </ScrollViewer>
+                <Label Content="Numer kanału:" HorizontalAlignment="Left" Margin="972,645,0,0" VerticalAlignment="Top" Width="121" Height="24"/>
+                <ComboBox x:Name="ComboBoxNumerKanaluMapa" Margin="1093,645,507,0" VerticalAlignment="Top" Loaded="ComboBoxNumerKanaluMapa_Loaded" DropDownClosed="ComboBoxNumerKanaluMapa_DropDownClosed"/>
+                <Label Content="Y [km]" HorizontalAlignment="Left" Margin="939,298,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.128,0.365">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="30.514" Y="-23.494"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="X [km]" HorizontalAlignment="Left" Margin="1388,-7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.128,0.365">
+                </Label>
             </Grid>
-        </TabItem>
-
-        <TabItem x:Name="TabItemMapa" Header="Mapa" Height="22" VerticalAlignment="Top">
-
         </TabItem>
     </TabControl>
 </Window>
